@@ -1,0 +1,6 @@
+---
+- git:
+    repo: https://github.com/kamatama41/tfenv.git
+    dest: /home/chris/.tfenv
+    force: yes
+

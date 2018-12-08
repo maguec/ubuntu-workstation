@@ -1,0 +1,9 @@
+---
+# tasks file for ubuntu-workstation
+
+- include: prereqs.yml
+- include: base_packages.yml
+- include: dotfiles.yml
+- include: gui_packages.yml
+- include: devtools.yml
+- include: tfenv.yml

@@ -1,0 +1,11 @@
+---
+
+- name: Ubuntu GUI Packages
+  apt: >
+    pkg={{item}}
+    state=present
+  with_items:
+    - fonts-hack
+    - wireshark
+    - vim-gtk3
+    - chromium-browser

@@ -1,0 +1,16 @@
+---
+
+- name: Ubuntu Packages
+  apt: >
+    pkg={{item}}
+    state=present
+  with_items:
+    - git
+    - htop
+    - iotop
+    - vim
+    - sysstat
+    - tmux
+    - tree
+    - tcpdump
+    - unzip

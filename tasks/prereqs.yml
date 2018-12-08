@@ -1,0 +1,13 @@
+---
+# tasks file for ubuntu-workstation
+
+- name: Update Apt Cache
+  apt: update_cache=yes cache_valid_time=86400
+
+- name: Remap capslock
+  lineinfile:
+    path: /etc/default/keyboard
+    regexp: '^XKBOPTIONS='
+    line: 'XKBOPTIONS="ctrl:swapcaps"'
+  notify:
+    - remap_capslock

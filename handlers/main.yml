@@ -1,0 +1,6 @@
+---
+# handlers file for ubuntu-workstation
+
+- name: remap_capslock
+  command:  /usr/bin/setxkbmap -option "ctrl:swapcaps"
+

@@ -1,0 +1,20 @@
+---
+- git:
+    repo: https://github.com/maguec/dotfiles.git
+    dest: /home/chris/.dotfiles
+    force: yes
+
+- name: Fix Dotfiles
+  command: chown -R chris:chris /home/chris/.dotfiles
+
+- name: Setup Dotfiles
+  command: su - chris -c /home/chris/.dotfiles/setup.sh
+  args:
+    chdir: /home/chris
+    creates: /home/chris/.vim/bundle/vundle/README.md
+
+- name: Setup Vim
+  command: su - chris -c "/usr/bin/vim +BundleInstall +qall"
+  args:
+    chdir: /home/chris
+
