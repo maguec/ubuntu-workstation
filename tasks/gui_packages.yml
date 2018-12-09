@@ -1,11 +1,24 @@
 ---
 
 - name: Ubuntu GUI Packages
-  apt: >
-    pkg={{item}}
-    state=present
+  apt:
+    pkg: "{{ item }}"
+    state: present
   with_items:
     - fonts-hack
     - wireshark
     - vim-gtk3
     - chromium-browser
+    - fonts-powerline
+    - gnome-tweaks
+
+# Snaps aren't managed until 2.8
+#- name: Install GUI Snaps
+#  snap:
+#    name:
+#      - slack
+
+- name: Install Slack Snap
+  command: snap install slack --classic
+  args:
+    creates: /snap/bin/slack

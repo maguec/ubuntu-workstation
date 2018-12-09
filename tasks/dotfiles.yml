@@ -13,8 +13,22 @@
     chdir: /home/chris
     creates: /home/chris/.vim/bundle/vundle/README.md
 
-- name: Setup Vim
-  command: su - chris -c "/usr/bin/vim +BundleInstall +qall"
-  args:
-    chdir: /home/chris
+    #- name: Setup Vim
+    #  command: su - chris -c "/usr/bin/vim +BundleInstall +qall"
+    #  args:
+    #    chdir: /home/chris
 
+- name: sloppy_focus
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences focus-mode 'mouse'
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: autoraise
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences auto-raise true
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: autoraise_delay
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences auto-raise-delay 500
+  become: yes
+  become_user: "{{ ubuntu_user }}"
