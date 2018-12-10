@@ -9,6 +9,7 @@
     - wireshark
     - vim-gtk3
     - chromium-browser
+    - powerline
     - fonts-powerline
     - gnome-tweaks
 
