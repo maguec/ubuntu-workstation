@@ -36,3 +36,8 @@
   command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences auto-raise-delay 500
   become: yes
   become_user: "{{ ubuntu_user }}"
+
+- name: remap_capslock
+  command:  /usr/bin/setxkbmap -layout us -option ctrl:nocaps
+  become: yes
+  become_user: "{{ ubuntu_user }}"
