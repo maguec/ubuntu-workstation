@@ -1,22 +1,26 @@
 ---
 - git:
     repo: https://github.com/maguec/dotfiles.git
-    dest: /home/chris/.dotfiles
+    dest: "/home/{{ ubuntu_user }}/.dotfiles"
     force: yes
 
 - name: Fix Dotfiles
-  command: chown -R chris:chris /home/chris/.dotfiles
+  command: "chown -R {{ ubuntu_user }}:{{ ubuntu_user }} /home/{{ ubuntu_user }}/.dotfiles"
 
 - name: Setup Dotfiles
-  command: su - chris -c /home/chris/.dotfiles/setup.sh
+  command: "/home/{{ ubuntu_user }}/.dotfiles/setup.sh"
   args:
-    chdir: /home/chris
-    creates: /home/chris/.vim/bundle/vundle/README.md
+    chdir: "/home/{{ ubuntu_user }}"
+    creates: "/home/{{ ubuntu_user }}/.vim/bundle/vundle/README.md"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
 
-    #- name: Setup Vim
-    #  command: su - chris -c "/usr/bin/vim +BundleInstall +qall"
-    #  args:
-    #    chdir: /home/chris
+- name: Setup Vim
+  command: "/usr/bin/vim +BundleInstall +qall"
+  args:
+    chdir: "/home/{{ ubuntu_user }}"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
 
 - name: sloppy_focus
   command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences focus-mode 'mouse'
