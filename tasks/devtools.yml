@@ -7,3 +7,17 @@
   with_items:
     - build-essential
     - golang
+
+- name: Grab RVM
+  get_url:
+    url: https://get.rvm.io 
+    dest: /var/tmp/rvm 
+
+- name: Setup RVM
+  command: "/bin/bash /var/tmp/rvm"
+  args:
+    chdir: "/home/{{ ubuntu_user }}"
+    creates: "/home/{{ ubuntu_user }}/.rvm"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
