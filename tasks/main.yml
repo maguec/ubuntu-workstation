@@ -7,3 +7,4 @@
 - include: gui_packages.yml
 - include: devtools.yml
 - include: tfenv.yml
+- include: google.yml
