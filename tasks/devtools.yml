@@ -8,6 +8,8 @@
     - build-essential
     - golang
     - cmake
+    - redis-tools
+    - nmap
 
 - name: Grab RVM
   get_url:
