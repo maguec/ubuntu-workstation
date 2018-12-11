@@ -8,3 +8,4 @@
 - include: devtools.yml
 - include: tfenv.yml
 - include: google.yml
+- include: benchmarktools.yml

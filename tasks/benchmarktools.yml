@@ -1,0 +1,60 @@
+---
+
+- name: Ubuntu DevTool Packages
+  apt: >
+    pkg={{item}}
+    state=present
+  with_items:
+    - build-essential
+    - autoconf
+    - automake
+    - libpcre3-dev
+    - libevent-dev
+    - pkg-config 
+    - zlib1g-dev
+
+- name: Git clone memtier_benchmark
+  git:
+    repo: https://github.com/RedisLabs/memtier_benchmark.git
+    dest: "/home/{{ ubuntu_user }}/Code/memtier_benchmark"
+    force: yes
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: run memtier autoconf
+  command: autoreconf -ivf
+  args:
+    chdir: "/home/{{ ubuntu_user }}/Code/memtier_benchmark"
+    creates: "/home/{{ ubuntu_user }}/Code/memtier_benchmark/configure"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: run memtier configure
+  command: ./configure
+  args:
+    chdir: "/home/{{ ubuntu_user }}/Code/memtier_benchmark"
+    creates: "/home/{{ ubuntu_user }}/Code/memtier_benchmark/Makefile"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: Run memtier make
+  make:
+    chdir: "/home/{{ ubuntu_user }}/Code/memtier_benchmark"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+  
+
+- name: Git clone wrk benchmark
+  git:
+    repo: https://github.com/wg/wrk.git
+    dest: "/home/{{ ubuntu_user }}/Code/wrk"
+    force: yes
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: Run wrk make
+  make:
+    chdir: "/home/{{ ubuntu_user }}/Code/wrk"
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+  
