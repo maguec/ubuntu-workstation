@@ -1,8 +1,11 @@
 ---
-- git:
+- name: Checkout Dotfiles
+  git:
     repo: https://github.com/maguec/dotfiles.git
     dest: "/home/{{ ubuntu_user }}/.dotfiles"
     force: yes
+  become: yes
+  become_user: "{{ ubuntu_user }}"
 
 - name: Fix Dotfiles
   command: "chown -R {{ ubuntu_user }}:{{ ubuntu_user }} /home/{{ ubuntu_user }}/.dotfiles"
