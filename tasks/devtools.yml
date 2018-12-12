@@ -10,6 +10,7 @@
     - cmake
     - redis-tools
     - nmap
+    - docker.io
 
 - name: Grab RVM
   get_url:
