@@ -1,5 +1,26 @@
 ---
 
+- name: sloppy_focus
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences focus-mode 'mouse'
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: autoraise
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences auto-raise true
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: autoraise_delay
+  command:  /usr/bin/gsettings set org.gnome.desktop.wm.preferences auto-raise-delay 500
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+- name: remap_capslock
+  command:  /usr/bin/setxkbmap -layout us -option ctrl:nocaps
+  become: yes
+  become_user: "{{ ubuntu_user }}"
+
+
 - name: Ubuntu GUI Packages
   apt:
     pkg: "{{ item }}"

@@ -1,2 +1,5 @@
 ---
 # vars file for ubuntu-workstation
+
+gui_install: "{{ GUI_INSTALL|default('True') }}"
+vim_plugin_install: "{{ VIM_PLUGIN_INSTALL|default('True') }}"

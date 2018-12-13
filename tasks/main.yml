@@ -1,11 +1,11 @@
 ---
 # tasks file for ubuntu-workstation
 
-- include: prereqs.yml
-- include: base_packages.yml
-- include: dotfiles.yml
-- include: gui_packages.yml
-- include: devtools.yml
-- include: tfenv.yml
-- include: google.yml
-- include: benchmarktools.yml
+- { include: prereqs.yml,        tags: ["prereqs"] }
+- { include: base_packages.yml,  tags: ["base_packages"] }
+- { include: dotfiles.yml,       tags: ["dotfiles"] }
+- { include: devtools.yml,       tags: ["devtools"] }
+- { include: tfenv.yml,          tags: ["tfenv"] }
+- { include: benchmarktools.yml, tags: ["benchmarktools"] }
+- { include: gui_packages.yml,   tags: ["gui_packages"], when: gui_install }
+- { include: google.yml,         tags: ["google"],  when: gui_install}
