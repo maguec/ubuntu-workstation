@@ -11,3 +11,4 @@
     line: 'XKBOPTIONS="ctrl:swapcaps"'
   notify:
     - remap_capslock
+  ignore_errors: yes
