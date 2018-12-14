@@ -1,0 +1,10 @@
+---
+- name: Create User
+  user:
+    name: "{{ ubuntu_user }}"
+
+- name: User SSH key
+  authorized_key:
+    user: "{{ ubuntu_user }}"
+    state: present
+    key: "{{ssh_key}}"

@@ -3,3 +3,5 @@
 
 gui_install: "{{ GUI_INSTALL|default('True') }}"
 vim_plugin_install: "{{ VIM_PLUGIN_INSTALL|default('True') }}"
+create_user: "{{ CREAT_USER|default('False') }}"
+ssh_key: "{{ SSH_KEY|default('') }}"

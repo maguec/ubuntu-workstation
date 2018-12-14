@@ -21,7 +21,9 @@ Vagrant.configure("2") do |config|
     ansible.extra_vars = {
       gui_install: "False",
       vim_plugin_install: "False",
-      ubuntu_user: "vagrant"
+      create_user: "True",
+      ubuntu_user: "admin",
+      ssh_key: File.read('/home/chris/.ssh/id_dsa.pub')
     }
     ansible.become   = "true"
     ansible.verbose  = "true"
