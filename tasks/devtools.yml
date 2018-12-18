@@ -11,7 +11,7 @@
     - redis-tools
     - nmap
     - jq
-    - aws-cli
+    - awscli
     - docker.io
 
 - name: Grab RVM
