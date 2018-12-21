@@ -16,3 +16,4 @@
     - unzip
     - curl
     - taskwarrior
+    - mosh
