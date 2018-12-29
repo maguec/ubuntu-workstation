@@ -33,6 +33,7 @@
     - powerline
     - fonts-powerline
     - gnome-tweaks
+    - gimp
 
 # Snaps aren't managed until 2.8
 #- name: Install GUI Snaps

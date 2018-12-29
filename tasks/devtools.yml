@@ -5,6 +5,7 @@
     pkg={{item}}
     state=present
   with_items:
+    - linux-headers-generic
     - build-essential
     - golang
     - cmake
@@ -13,6 +14,7 @@
     - jq
     - awscli
     - docker.io
+    - vagrant
 
 - name: Grab RVM
   get_url:
@@ -27,3 +29,26 @@
   become: yes
   become_user: "{{ ubuntu_user }}"
 
+- name: VirtualBox apt keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  with_items:
+    - https://www.virtualbox.org/download/oracle_vbox_2016.asc 
+    - https://www.virtualbox.org/download/oracle_vbox.asc
+
+- name:  VirtualBox apt repo
+  apt_repository:
+    repo: "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
+    state: present
+    update_cache: yes
+
+- name: Install Virtualbox DKMS
+  apt:
+    name: virtualbox-dkms
+    state: present
+
+- name: Install Virtualbox
+  apt:
+    name: virtualbox
+    state: present
